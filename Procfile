@@ -1,0 +1,1 @@
+web: gunicorn mountmellick_motors.wsgi:application
