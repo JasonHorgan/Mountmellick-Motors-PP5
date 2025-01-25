@@ -1,1 +1,1 @@
-web: gunicorn mountmellick_motors.wsgi:application
+web: gunicorn mountmellick_motors.wsgi
