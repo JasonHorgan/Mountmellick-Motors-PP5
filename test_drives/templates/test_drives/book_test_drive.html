@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class="mt-5 pt-5 text-center">
+    <h2 class="mt-4 pt-4">Book a Test Drive</h2>
+  <div class="container mt-5 pt-4">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form|crispy }}  
+      </div>
+      <button type="submit" class="btn btn-primary">Book Test Drive</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
