@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import Stock, Reg
+from .models import Stock
 
 # Register your models here.
 
 class StockAdmin(admin.ModelAdmin):
     list_display = (
-        'reg',
         'make',
         'model',
         'price',
@@ -13,9 +12,8 @@ class StockAdmin(admin.ModelAdmin):
         'image',
     )
 
-    ordering = ('reg',)
+    ordering = ('make',)
 
 
 admin.site.register(Stock, StockAdmin)
-admin.site.register(Reg,)
 
