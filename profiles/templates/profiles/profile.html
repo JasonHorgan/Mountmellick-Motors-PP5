@@ -73,6 +73,40 @@
                 </div>
             </div>
         </div>
+
+        <!-- Test Drives -->
+    {% if test_drives %}
+        <div class="row mt-5">
+            <div class="col">
+                <hr>
+                <h3 class="logo-font mb-4">My Test Drive Bookings</h3>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Car</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for test_drive in test_drives %}
+                                <tr>
+                                    <td>{{ test_drive.car }}</td>
+                                    <td>{{ test_drive.date }}</td>
+                                    <td>{{ test_drive.time }}</td>
+                                    <td>{{ test_drive.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block postloadjs %}

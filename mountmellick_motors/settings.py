@@ -32,7 +32,8 @@ if not SECRET_KEY:
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jasonhorgan-mountmellic-xs1zd87js1v.ws.codeinstitute-ide.net', '.herokuapp.com',
-'8000-jasonhorgan-mountmellic-kpy8wsgb5ig.ws-eu117.gitpod.io' ]
+'8000-jasonhorgan-mountmellic-kpy8wsgb5ig.ws-eu117.gitpod.io',
+'127.0.0.1',]
 
 
 # Application definition
@@ -85,7 +86,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # required by allauth
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',

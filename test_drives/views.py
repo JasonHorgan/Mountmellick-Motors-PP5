@@ -2,16 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import TestDriveForm
 
-@login_required
-@login_required  # Ensure the user is logged in
+
+@login_required  
 def book_test_drive(request):
     if request.method == 'POST':
         form = TestDriveForm(request.POST)
         if form.is_valid():
-            test_drive = form.save(commit=False)  # Don't save yet
-            test_drive.user = request.user  # Set the user field to the logged-in user
-            test_drive.save()  # Now save the test drive with the user field populated
-            return redirect('test_drive_confirmation')  # Redirect to the confirmation page
+            test_drive = form.save(commit=False)  
+            test_drive.user = request.user  
+            test_drive.save()  
+            return redirect('test_drive_confirmation')  
     else:
         form = TestDriveForm()
 
