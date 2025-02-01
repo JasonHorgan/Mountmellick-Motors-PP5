@@ -148,7 +148,7 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     subject = f"Order Confirmation - {order_number}"
-    message = f"Thank you for your order! Your order number is {order_number}. We will contact you when your vehicle is ready for collection."
+    message = f"Thank you for your order from Mountmellick motors! Your order number is {order_number}. We will contact you when your vehicle is ready for collection."
     from_email = settings.DEFAULT_FROM_EMAIL
     recipient_list = [order.email]
 
