@@ -31,4 +31,4 @@ class TestDriveForm(forms.ModelForm):
         
        
         self.fields['car'].queryset = Stock.objects.all()  
-        self.fields['car'].label_from_instance = lambda obj: f"{obj.make} {obj.model}"  
+        self.fields['car'].label_from_instance = lambda obj: f"{obj.reg_number} {obj.make} {obj.model}"  
