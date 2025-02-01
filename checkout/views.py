@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.conf import settings
 
 from .forms import OrderForm
@@ -128,11 +129,10 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
 
-        # Save the user's info
+    
         if save_info:
             profile_data = {
                 'default_phone_number': order.phone_number,
@@ -147,16 +147,23 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+    subject = f"Order Confirmation - {order_number}"
+    message = f"Thank you for your order! Your order number is {order_number}. We will contact you when your vehicle is ready for collection."
+    from_email = settings.DEFAULT_FROM_EMAIL
+    recipient_list = [order.email]
 
+    try:
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        print(f"✅ Confirmation email sent to {order.email}")
+    except Exception as e:
+        print(f"❌ Error sending email: {e}")
+
+    # Notify the user
+    messages.success(request, f'Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.')
+
+    # Clear the shopping bag from session
     if 'bag' in request.session:
         del request.session['bag']
 
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-    }
-
-    return render(request, template, context)
+    # Return the success page with order details
+    return render(request, 'checkout/checkout_success.html', {'order': order})
