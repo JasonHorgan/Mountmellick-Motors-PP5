@@ -3,8 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: #f0f0f0;
     color: #555;
     font-family: 'Lato';
     padding-top: 164px;  /* Add padding-top equal to the height of the header */
