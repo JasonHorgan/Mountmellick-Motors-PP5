@@ -8,3 +8,4 @@ class FinanceApplicationAdmin(admin.ModelAdmin):
     readonly_fields = ['application_number', 'application_date']
 
 admin.site.register(FinanceApplication, FinanceApplicationAdmin)
+

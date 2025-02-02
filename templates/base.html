@@ -23,6 +23,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
     {% endblock %}
 
     {% block extra_css %}
@@ -138,17 +139,35 @@
     {% block page_header %}
     {% endblock %}
 
+
+
     {% block content %}
     {% endblock %}
 
-    {% block postloadjs %}
-    <script type="text/javascript">
-        $('.toast').toast('show');
-    </script>
-    {% endblock %}
-
-    <!-- Footer  -->
-<footer class="bg-dark text-white py-5">
+  <!-- Footer  -->
+  <footer class="bg-dark text-white py-5">
+    <div id="mc_embed_signup">
+        <form action="https://gmail.us7.list-manage.com/subscribe/post?u=2145e751542817c421a991f59&amp;id=10d36e5c37&amp;f_id=00fdaee4f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+            <div id="mc_embed_signup_scroll"><h2>Subscribe to be notified about new stock</h2>
+                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+            <div id="mce-responses" class="clear foot">
+                <div class="response" id="mce-error-response" style="display: none;"></div>
+                <div class="response" id="mce-success-response" style="display: none;"></div>
+            </div>
+        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+            /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+            <input type="text" name="b_2145e751542817c421a991f59_10d36e5c37" tabindex="-1" value="">
+        </div>
+            <div class="optionalParent">
+                <div class="clear foot">
+                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                    <p style="margin: 0px auto;"><a href="http://eepurl.com/i81b7U" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -180,7 +199,7 @@
                     </a>
                 </p>
             </div>
-
+            
             <div class="col-md-4 mb-4">
                 <h5 class="text-uppercase">Opening Hours</h5>
                 <ul class="list-unstyled">
@@ -196,6 +215,14 @@
 <div class="bg-black text-center py-3">
     <p class="mb-0 text-white">&copy; 2025 Mountmellick Motors. All rights reserved.</p>
 </div>
+
+    {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+
+    {% endblock %}
 
   </body>
 </html>
