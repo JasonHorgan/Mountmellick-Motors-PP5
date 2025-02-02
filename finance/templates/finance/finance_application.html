@@ -1,13 +1,13 @@
-<!-- finance_application.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5 pt-5">
-    <h2>Finance Application for {{ car.make }} {{ car.model }}</h2>
+<div class="container mt-5">
+    <h1>Finance Application</h1>
+    <p>Please fill out the form below to apply for financing:</p>
 
-    <form method="POST">
+    <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_p }}  
         <button type="submit" class="btn btn-primary">Submit Application</button>
     </form>
 </div>
