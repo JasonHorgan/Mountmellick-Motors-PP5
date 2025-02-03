@@ -35,6 +35,13 @@ body {
     color: white;
 }
 
+.fixed-image {
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+    width: 100%;
+}
+
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -175,3 +182,4 @@ input[name='q']::placeholder {
 
 .arrow-danger {
     border-bottom-color: #dc3545 !
+}
