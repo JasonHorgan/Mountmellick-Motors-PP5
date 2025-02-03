@@ -29,7 +29,7 @@ if not SECRET_KEY:
     raise Exception("SECRET_KEY is not set! Please configure it in env.py or as an environment variable.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-jasonhorgan-mountmellic-xs1zd87js1v.ws.codeinstitute-ide.net', '.herokuapp.com',
 '8000-jasonhorgan-mountmellic-kpy8wsgb5ig.ws-eu117.gitpod.io',
