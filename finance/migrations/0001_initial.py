@@ -11,27 +11,81 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('products', '0003_auto_20250130_1518'),
+        ("products", "0003_auto_20250130_1518"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='FinanceApplication',
+            name="FinanceApplication",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('application_number', models.CharField(editable=False, max_length=32)),
-                ('application_date', models.DateTimeField(auto_now_add=True)),
-                ('full_name', models.CharField(max_length=200)),
-                ('date_of_birth', models.DateField()),
-                ('address', models.TextField()),
-                ('phone_number', models.CharField(max_length=20)),
-                ('email', models.EmailField(max_length=254)),
-                ('employment_status', models.CharField(choices=[('Employed', 'Employed'), ('Self-Employed', 'Self-Employed'), ('Unemployed', 'Unemployed')], max_length=50)),
-                ('monthly_income', models.DecimalField(decimal_places=2, default=0, max_digits=12)),
-                ('loan_term', models.IntegerField(choices=[(12, '12 months'), (24, '24 months'), (36, '36 months'), (48, '48 months')])),
-                ('preferred_contact_method', models.CharField(choices=[('Email', 'Email'), ('Phone', 'Phone')], max_length=50)),
-                ('car', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.stock')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "application_number",
+                    models.CharField(editable=False, max_length=32),
+                ),
+                ("application_date", models.DateTimeField(auto_now_add=True)),
+                ("full_name", models.CharField(max_length=200)),
+                ("date_of_birth", models.DateField()),
+                ("address", models.TextField()),
+                ("phone_number", models.CharField(max_length=20)),
+                ("email", models.EmailField(max_length=254)),
+                (
+                    "employment_status",
+                    models.CharField(
+                        choices=[
+                            ("Employed", "Employed"),
+                            ("Self-Employed", "Self-Employed"),
+                            ("Unemployed", "Unemployed"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "monthly_income",
+                    models.DecimalField(
+                        decimal_places=2, default=0, max_digits=12
+                    ),
+                ),
+                (
+                    "loan_term",
+                    models.IntegerField(
+                        choices=[
+                            (12, "12 months"),
+                            (24, "24 months"),
+                            (36, "36 months"),
+                            (48, "48 months"),
+                        ]
+                    ),
+                ),
+                (
+                    "preferred_contact_method",
+                    models.CharField(
+                        choices=[("Email", "Email"), ("Phone", "Phone")],
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "car",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.stock",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

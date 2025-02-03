@@ -8,89 +8,108 @@ from .forms import ProductForm
 
 # Create your views here.
 
-def all_stock (request):
-    """ A view to show all stock, including sorting and search queries """
+
+def all_stock(request):
+    """A view to show all stock, including sorting and search queries"""
 
     stock = Stock.objects.all()
 
     context = {
-        'stock': stock,
+        "stock": stock,
     }
 
-    return render(request, 'products/products.html', context)
+    return render(request, "products/products.html", context)
 
-def product_detail (request, stock_id):
-    """ A view to show individual stock details """
+
+def product_detail(request, stock_id):
+    """A view to show individual stock details"""
 
     stock = get_object_or_404(Stock, pk=stock_id)
 
     context = {
-        'stock': stock,
+        "stock": stock,
     }
 
-    return render(request, 'products/product_detail.html', context)
+    return render(request, "products/product_detail.html", context)
+
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
+    """Add a product to the store"""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
-        
-    if request.method == 'POST':
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
+
+    if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()  # Save the product and get the instance
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_detail', args=[product.id]))  # Pass product.id
+            messages.success(request, "Successfully added product!")
+            return redirect(
+                reverse("product_detail", args=[product.id])
+            )  # Pass product.id
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                "Failed to add product. Please ensure the form is valid.",
+            )
     else:
         form = ProductForm()
-        
-    template = 'products/add_product.html'
+
+    template = "products/add_product.html"
     context = {
-        'form': form,
+        "form": form,
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_product(request, stock_id):
-    """ Edit a product in the store """
+    """Edit a product in the store"""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
 
     product = get_object_or_404(Stock, pk=stock_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_detail', args=[product.id]))
+            messages.success(request, "Successfully updated product!")
+            return redirect(reverse("product_detail", args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                "Failed to update product. Please ensure the form is valid.",
+            )
     else:
         form = ProductForm(instance=product)
-        messages.info(request, f'You are editing {product.make} {product.model}')
+        messages.info(
+            request, f"You are editing {product.make} {product.model}"
+        )
 
-    template = 'products/edit_product.html'
+    template = "products/edit_product.html"
     context = {
-        'form': form,
-        'product': product,
+        "form": form,
+        "product": product,
     }
 
     return render(request, template, context)
 
+
 @login_required
 def delete_product(request, stock_id):
-    """ Delete a product from the store """
+    """Delete a product from the store"""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
 
-    product = get_object_or_404(Stock, pk=stock_id)  # Correct variable name: product
+    product = get_object_or_404(
+        Stock, pk=stock_id
+    )  # Correct variable name: product
     product.delete()  # Call delete() on product, not stock
-    messages.success(request, 'Product deleted!')
-    return redirect(reverse('stock'))  # Ensure this matches the name of the all_stock view
+    messages.success(request, "Product deleted!")
+    return redirect(
+        reverse("stock")
+    )  # Ensure this matches the name of the all_stock view

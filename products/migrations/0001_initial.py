@@ -8,30 +8,71 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Reg',
+            name="Reg",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('reg_number', models.CharField(max_length=254)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("reg_number", models.CharField(max_length=254)),
             ],
         ),
         migrations.CreateModel(
-            name='Stock',
+            name="Stock",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('make', models.CharField(blank=True, max_length=254, null=True)),
-                ('model', models.CharField(blank=True, max_length=254, null=True)),
-                ('fuel_type', models.CharField(blank=True, max_length=254, null=True)),
-                ('transmission_type', models.CharField(blank=True, max_length=254, null=True)),
-                ('description', models.TextField()),
-                ('price', models.DecimalField(decimal_places=2, max_digits=6)),
-                ('image_url', models.URLField(blank=True, max_length=1024, null=True)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='')),
-                ('reg', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='products.reg')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "make",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                (
+                    "model",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                (
+                    "fuel_type",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                (
+                    "transmission_type",
+                    models.CharField(blank=True, max_length=254, null=True),
+                ),
+                ("description", models.TextField()),
+                ("price", models.DecimalField(decimal_places=2, max_digits=6)),
+                (
+                    "image_url",
+                    models.URLField(blank=True, max_length=1024, null=True),
+                ),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to=""),
+                ),
+                (
+                    "reg",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="products.reg",
+                    ),
+                ),
             ],
         ),
     ]

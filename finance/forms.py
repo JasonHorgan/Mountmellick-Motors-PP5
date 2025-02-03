@@ -2,6 +2,7 @@ from django import forms
 from .models import FinanceApplication
 from products.models import Stock
 
+
 class FinanceApplicationForm(forms.ModelForm):
     class Meta:
         model = FinanceApplication
@@ -26,9 +27,11 @@ class FinanceApplicationForm(forms.ModelForm):
     )
 
     date_of_birth = forms.DateField(
-        widget=forms.DateInput(attrs={
-            'type': 'date',  
-        })
+        widget=forms.DateInput(
+            attrs={
+                "type": "date",
+            }
+        )
     )
 
     def __init__(self, *args, **kwargs):
@@ -38,17 +41,21 @@ class FinanceApplicationForm(forms.ModelForm):
         self.fields["car"].label_from_instance = self.car_label_from_instance
 
     def car_label_from_instance(self, obj):
-        """ Customize the way each car is displayed in the dropdown. """
+        """Customize the way each car is displayed in the dropdown."""
         return f"{obj.reg_number} - {obj.make} {obj.model}"
 
     def clean_monthly_income(self):
         monthly_income = self.cleaned_data["monthly_income"]
         if monthly_income <= 0:
-            raise forms.ValidationError("Monthly income must be a positive value.")
+            raise forms.ValidationError(
+                "Monthly income must be a positive value."
+            )
         return monthly_income
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data["phone_number"]
         if len(phone_number) < 10:
-            raise forms.ValidationError("Phone number must have at least 10 digits.")
+            raise forms.ValidationError(
+                "Phone number must have at least 10 digits."
+            )
         return phone_number
