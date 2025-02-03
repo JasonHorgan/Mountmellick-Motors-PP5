@@ -3,8 +3,8 @@ html {
 }
 
 body {
-    background: #f0f0f0;
-    color: #555;
+    background: #eae7dc;  /* Warm Neutral Gray */
+    color: #222;  /* Even darker gray for contrast */      
     font-family: 'Lato';
     padding-top: 164px;  /* Add padding-top equal to the height of the header */
 }
