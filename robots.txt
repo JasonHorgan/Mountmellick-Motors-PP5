@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: https://mountmellick-motors-59b177d11415.herokuapp.com/sitemap.xml
