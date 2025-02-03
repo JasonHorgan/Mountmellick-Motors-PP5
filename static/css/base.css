@@ -9,6 +9,32 @@ body {
     padding-top: 164px;  /* Add padding-top equal to the height of the header */
 }
 
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    background: url('/media/hero-image-mm.jpeg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 700px;
+    font-family: 'Lato', sans-serif;
+}
+
+.hero-overlay h1, 
+.hero-overlay p {
+    color: white;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;

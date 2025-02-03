@@ -10,18 +10,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">
-                    View all of our stock here!
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'stock' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">View Stock</a>
-                    </h4>
-                </div>
-            </div>
-        </div>
+<div class="hero-container d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="hero-overlay">
+        <h1 class="display-3 logo-font">Mountmellick Motors</h1>
+        <p class="lead mt-3">
+            Your trusted, local car dealership in the heart of the midlands, offering a wide selection of high-quality vehicles at competitive prices.
+        </p>
+        <a href="{% url 'stock' %}" class="btn btn-lg btn-primary rounded-0 text-uppercase py-3 mt-4">View Stock</a>
     </div>
+</div>
 {% endblock %}
