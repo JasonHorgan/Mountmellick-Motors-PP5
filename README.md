@@ -239,6 +239,14 @@ I used Mailchimp to create a newsletter sign up which was then integrated into t
 
 # Testing
 
+- HTML Validation
+
+  HTML Code passed validation with no warnings or errors on all pages. All pages gave the same result as in the below screenshot 
+
+  <img src="/static/images/readme-images/HTML_valid_1.png">
+
+- CSS Validation
+  
 
 
 
