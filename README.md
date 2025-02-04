@@ -258,7 +258,11 @@ I used Mailchimp to create a newsletter sign up which was then integrated into t
 
 ## Lighthouse testing
 
+My site passed lighthouse testing with no issues that I could find. There was an accessibility issue where the "Privacy policy" text in the footer was blue so it wasn't readable. I changed the text colour to white and re-deployed and then re-tested and now it works and passes lighthouse testing. 
 
+<img src="/static/images/readme-images/lighthouse1.png">
+<img src="/static/images/readme-images/lighthouse2.png">
+<img src="/static/images/readme-images/lighthouse3.png">
 
 
 
