@@ -51,10 +51,65 @@ I did my best to follow the Agile development method by using Github User storie
 
 # User Stories
 
+As mentioned above, I used Github projects to help me keep track of user stories, which can be found here - 
 
+Here are some of the most important user stories:
+
+- #### Set up workspace
+As a Developer I can set up my workspace so that I can write my code and follow along to the botique ado walkthrough with ease.
+
+- #### Set up folders and file paths
+As a Developer I can set up folders and ensure file paths are correct so that everything works as intended
+
+- #### Create 3 custom models
+As a developer I can set up 3 custom models so that I am meeting the minimum pass criteria for this assignment
+
+- #### Set up allauth
+As a Developer I can install and set up allauth so that users of my site can create an account and log in
+
+- #### Set up Stripe
+As a Developer I can set up Stripe so that users of my site can securely make payments
 
 
 # Features
+
+I wanted the site to be as easy to use and accessible as possible, so the only pages that require the user to log in or create an account are the test drives bookingpage and the profile page. Only superusers can access the product management page and have access to edit stock on the site. 
+
+## Base
+
+The base.html page contains all of the header and Footer code that is transferred across the site when it is loaded into other pages, as well as other important pages and info such as Javascript, messages, meta tags etc.
+The nav is broken up between main-nav.html and mobile-top-header.html to make them both more customisable without taking up too much space on the base file. 
+
+<img src="static/images/readme-images/mobile-nav.png">
+<img src="static/images/readme-images/header.png">
+
+I wanted the footer to contain as much info as possible without feeling cramped and overloaded 
+
+<img src="static/images/readme-images/footer.png">
+
+### Index
+
+
+### About
+
+### bag
+
+### Checkout
+
+### Finance
+
+### Test Drives
+
+### Stock
+
+### Profile
+
+### Newsletter
+
+### Privacy Policy
+
+### Custom 404 page
+
 
 
 
