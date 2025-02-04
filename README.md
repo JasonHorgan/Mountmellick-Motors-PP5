@@ -198,11 +198,9 @@ Long-Tail Phrases:
 - How to Apply for Car Finance in Ireland
 - Where to Find the Best Car Deals Near Me
 
-<h1><img src=""/></h1>
-
 ## Meta Data
 
-img of meta data 
+<img src="/static/images/readme-images/meta.png"> 
 
 ## Sitemap
 
@@ -264,15 +262,115 @@ My site passed lighthouse testing with no issues that I could find. There was an
 <img src="/static/images/readme-images/lighthouse2.png">
 <img src="/static/images/readme-images/lighthouse3.png">
 
+## Manual Testing
 
+I tested all elements of the site myself manually and found no issues. Further details found below 
+
+### Account Registration
+
+| Test |Result  |
+|--|--|
+| User can create a profile | Pass |
+| User receives confirmation email | Pass |
+| User can log in | Pass |
+| User can log out | Pass |
+
+### User Navigation Tests
+
+| Test | Result  |
+|--|--|
+| User can access each page | Pass |
+| SuperUser can access admin page | Pass |
+| Each page on the site is accessible as intended | Pass |
+
+#### Account Authorisation Tests
+
+| Test | Result  |
+|--|--|
+| Only Superuser can access admin page | Pass |
+| Only Superuser can add, update and delete stock | Pass |
+| Only superusers can access product management | Pass|
+
+#### Profile
+
+| Test |Result  |
+|--|--|
+|User can add items to bag | Pass |
+|User can delete items from bag | Pass |
+|User can edit quantity of items in bag | Pass |
+|User can make a purchase with a test credit card | Pass |
+|User receives confirmation email when order is successful | Pass |
+|User can see the confirmation page when order is successful | Pass |
+|All users can submit a finance application | Pass |
+|Logged in user can view and update their address on profile page | Pass |
+|Logged in User can view order history on profile page | Pass |
+|Logged in User can create test drive bookings | Pass |
+|Logged in User can view, edit and delete test drives on profile page | Pass |
+
+### Responsiveness
+
+- The website is fully responsive on all screen sizes due to Bootstrap and CSS media queries
+
+
+### Browser Testing
+
+Browser | Outcome | Pass/Fail |
+--- | --- | --- |
+Google Chrome | No issues found (appearance/responsiveness)| Pass |
+Safari |  No issues found (appearance/responsiveness) | Pass |
+Mozilla Firefox |  No issues found (appearance/responsiveness)| Pass |
+
+### Other Testing
+
+I had some friends and family sign up to the site and try to make purchases with the test card and it seemed to work for everyone with no issues found from their testing 
+
+### Known Issues & Bugs
+When I was configuring the send email feature for users creating an account and order confirmations, I was getting an error from Django which was due to the version of Django used in my workspace as I used 3.12.8. The fix for this was to create a new file at the project level of the app called "python-version" which tells heroku to use version 3.11 of Django so that the emails would send. Tutoring helped me debug and fix this issue. 
+
+The main issue present on site at the moment is that when users are booking test drives, they can book a date in the past, which should not be possible. I would like to fix this in a future sprint. 
 
 # Deployment
 
+This project was deployed using Heroku. Full details of deployment seen below:
 
+Part 1 - Create the Heroku app:
+
+Navigate to your Heroku dashboard and create a new app with a unique name in a region close to you.
+In your new app’s settings tab, ensure the Config Var DISABLE_COLLECTSTATIC key has a value of 1. You should also set your Stripe keys, secret key and Database URL in your config vars section. 
+
+Part 2 - Update your code for deployment:
+
+Use pip3 to install gunicorn~=20.1 and freeze it to the requirements.txt file.
+In the settings.py file, set the DEBUG constant to False and append the '.herokuapp.com' hostname to the ALLOWED_HOSTS list.
+Git add, commit and push the code to your GitHub repo.
+
+Part 3 - Deploy to Heroku:
+
+In your new app’s Deploy tab, search for your GitHub repo and connect it to the Heroku app. Manually deploy the main branch of this GitHub repo.
+In your new app’s resources tab, ensure you are using an eco dyno and delete any Postgres database Add-on.
 
 # Credits
 
+# Resources
+
+- Project setup and general skeleton and functionality of the site was based on the CI boutique ado walkthrough.
+- Bootstrap 4 library was used for this project's general HTML layout. 
+- I used [STACK OVERFLOW](https://stackoverflow.com/) for help with debugging errors throughout the project.
+- [W3SCHOOLS](https://w3schools.com/) was used as a guide to help me understand Django and its features.
+- CI Slack channel student chat as a troubleshooting/general source of info
+- [OpenAI](https://openai.com/) - Troubleshooting bugs, text for website and for help with media queries/CSS
+- Photos of cars for sale were taken from public adverts on [Done Deal](https://www.donedeal.ie/motor) 
 
 
+
+### Media
+
+- Text sections derived from [OpenAI](https://openai.com/dall-e-2) and then tweaked to sound more natural.
+- Privacy Policy generated from [Privacy Policy Generator](https://privacypolicygenerator.info/).
+- Favicon was taken from [Wikipedia](https://it.m.wikipedia.org/wiki/File:Mountmellick_Coat_of_Arms.png) and then resized 
+
+### Acknowledgements
+
+I want to thank code institute staff for all their help throughout the year but especially to my Mentor Graham who offered a lot of much needed support throughout the year. Thank you to my cohort facillitator Marko for all of his guidance through the year too and also to the CI mentor and Student care team. Finally to my family for keeping me on track throughout the year to ensure I stayed focused and got it complete. 
 
 
