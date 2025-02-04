@@ -246,7 +246,19 @@ I used Mailchimp to create a newsletter sign up which was then integrated into t
   <img src="/static/images/readme-images/HTML_valid_1.png">
 
 - CSS Validation
-  
+
+  CSS code passed through the validator without any issues
+
+  <img src="/static/images/readme-images/css_valid.png">
+
+- Pyhton Linter
+  All my .py files passed through the linter without issue. I used the black extension to re-format them all, then manually tested them all one-by-one and manually fixed a few that black did not catch and now they all pass validation. 
+
+  <img src="/static/images/readme-images/pylinter.png">
+
+## Lighthouse testing
+
+
 
 
 
