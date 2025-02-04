@@ -124,7 +124,7 @@ The finance page is broken up into 3 pages, Finance info, Finance application an
 ### Test Drives
 The test drive application form is only available to people with an account on site. This is to ensure that if you have a test drive booked, it is stored on your user profile so you can edit and delete your appointment. I did not want this available to just anyone who accesses the site, as this could lead to a lot of bookings and potential no shows. I wanted only serious buyers to have access to test drives, ensuring higher quality leads. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/testdrive.png"/></h1>
 
 ### Stock
 The stock page is the bread and butter for the site. This is where users can find information about all of the cars in stock on the site. I wanted each vehicle to live inside of a bootstrap card with a button for applying for finance or booking a test drive. I think the bootstrap card layout on this page give is a very neat and proffessional feel. I also added edit and delete buttons for super users so they can edit or delete stock from the site. 
@@ -216,12 +216,12 @@ I included a robots.txt file.
 
 I created a mockup of a business facebook page for the dealership. I think Facebook is best suited as potential buyers may typically search Facebook marketplace when searching for a new car to purchase
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/facebook.jpg"/></h1>
 
 ## Email Marketing
 I used Mailchimp to create a newsletter sign up which was then integrated into the footer of the project with only an email address as the required field, to make signing up easy. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/newsletter.png"/></h1>
 
 # Technology
 
