@@ -21,4 +21,5 @@ class TestDrive(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Test Drive: {self.user.username} - {self.car.make} {self.car.model} on {self.date}"
+        return f"Test Drive: {self.user.username} - {self.car.make}"
+        " {self.car.model} on {self.date}"

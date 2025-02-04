@@ -56,4 +56,5 @@ class FinanceApplication(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Finance Application for {self.car.make} {self.car.model} by {self.user.username}"
+        return f"Finance Application for {self.car.make} {self.car.model} by "
+        "{self.user.username}"

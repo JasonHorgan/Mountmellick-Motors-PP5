@@ -38,8 +38,10 @@ def cache_checkout_data(request):
     except Exception as e:
         messages.error(
             request,
-            "Sorry, your payment cannot be \
-            processed right now. Please try again later.",
+            (
+                "Sorry, your payment cannot be processed right now. "
+                "Please try again later."
+            ),
         )
         return HttpResponse(content=e, status=400)
 
@@ -94,8 +96,8 @@ def checkout(request):
                     messages.error(
                         request,
                         (
-                            "One of the products in your bag wasn't found in our database. "
-                            "Please call us for assistance!"
+                            "One of the products in your bag wasn't found in "
+                            " our database. Please call us for assistance!"
                         ),
                     )
                     order.delete()
@@ -108,8 +110,10 @@ def checkout(request):
         else:
             messages.error(
                 request,
-                "There was an error with your form. \
-                Please double check your information.",
+                (
+                    "There was an error with your form. Please double check "
+                    "your information."
+                ),
             )
     else:
         bag = request.session.get("bag", {})
@@ -127,8 +131,6 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        # Attempt to prefill the form with any info
-        # the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -154,8 +156,7 @@ def checkout(request):
         messages.warning(
             request,
             (
-                "Stripe public key is missing. "
-                "Did you forget to set it in "
+                "Stripe public key is missing. Did you forget to set it in "
                 "your environment?"
             ),
         )
@@ -197,7 +198,11 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
 
     subject = f"Order Confirmation - {order_number}"
-    message = f"Thank you for your order from Mountmellick motors! Your order number is {order_number}. We will contact you when your vehicle is ready for collection."
+    message = (
+        f"Thank you for your order from Mountmellick motors! Your order "
+        f"number is {order_number}. We will contact you when your vehicle "
+        "is ready for collection."
+    )
     from_email = settings.DEFAULT_FROM_EMAIL
     recipient_list = [order.email]
 
@@ -211,7 +216,8 @@ def checkout_success(request, order_number):
 
     messages.success(
         request,
-        f"Order successfully processed! Your order number is {order_number}. A confirmation email will be sent to {order.email}.",
+        f"Order successfully processed! Your order number is {order_number}. "
+        f"A confirmation email will be sent to {order.email}.",
     )
 
     if "bag" in request.session:
