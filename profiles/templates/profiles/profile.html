@@ -74,42 +74,88 @@
             </div>
         </div>
 
-        <!-- Test Drives -->
-    {% if test_drives %}
-        <div class="row mt-5">
-            <div class="col">
-                <hr>
-                <h3 class="logo-font mb-4">My Test Drive Bookings</h3>
-                <hr>
-                <div class="table-responsive">
-                    <table class="table table-sm table-borderless">
-                        <thead>
+       
+        {% if test_drives %}
+    <div class="row mt-5">
+        <div class="col">
+            <hr>
+            <h3 class="logo-font mb-4">My Test Drive Bookings</h3>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Car</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for test_drive in test_drives %}
                             <tr>
-                                <th>Car</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Status</th>
+                                <td>{{ test_drive.car.reg_number }} {{ test_drive.car.make }} {{ test_drive.car.model }}</td>
+                                <td>{{ test_drive.date }}</td>
+                                <td>{{ test_drive.time }}</td>
+                                <td>
+                                    <a href="{% url 'edit_test_drive' test_drive.id %}" class="btn btn-sm btn-primary">Edit</a>
+                                    
+                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" 
+                                            data-id="{{ test_drive.id }}" data-car="{{ test_drive.car }}" data-date="{{ test_drive.date }}">
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {% for test_drive in test_drives %}
-                                <tr>
-                                    <td>{{ test_drive.car }}</td>
-                                    <td>{{ test_drive.date }}</td>
-                                    <td>{{ test_drive.time }}</td>
-                                    <td>{{ test_drive.status }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
-        {% endif %}
+    </div>
+{% endif %}
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Cancel Test Drive</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to cancel your test drive for <strong id="modalCarName"></strong> on <strong id="modalDate"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" id="deleteForm">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
     </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); 
+            var testDriveId = button.data('id'); 
+            var carName = button.data('car'); 
+            var date = button.data('date'); 
+
+            var modal = $(this);
+            modal.find('#modalCarName').text(carName);
+            modal.find('#modalDate').text(date);
+
+            var deleteUrl = "{% url 'delete_test_drive' 0 %}".replace('0', testDriveId);
+            modal.find('#deleteForm').attr('action', deleteUrl);
+        });
+    </script>
 {% endblock %}
