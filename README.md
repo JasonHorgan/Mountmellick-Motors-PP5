@@ -91,34 +91,51 @@ I wanted the footer to contain as much info as possible without feeling cramped 
 
 The index page AKA the home page, is the landing page for the site. I wanted it to be visually appealling and grab the user's attention immediately hence the flashy BMW as the hero image. The user can then see the button for viewing stock too. The home page also contains the Header and Footer, as do all other pages on the site 
 
+<h1><img src=""/></h1>
 
 ### About
 
 I kept the about page very simple. It just gives a few key details about the dealership and why they should choose mountmellick motors for buying their next vehicle. 
 
+<h1><img src=""/></h1>
+
 ### bag
 
 The bag contains all the contents of the users shopping bag. Heavily inspired by the boutique ado walkthrough. 
+
+<h1><img src=""/></h1>
 
 ### Checkout
 
 The checkout along with stripe implementation were taken directly from the boutique ado walkthrough. I really enjoyed this part of the walkthrough as I know Stripe is a very powerful and uselful tool to know how to work with in my future career as a developer. That said, it was also the most challenging part of the walkthrough for me. 
 
+<h1><img src=""/></h1>
+
 ### Finance
 
 The finance page is broken up into 3 pages, Finance info, Finance application and finance success. I wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership. If the finance applications were locked behind a sign up process, the dealership may lose leads. This is typical of the automotive industry. I also included buttons to the finance application form on the stock page to drive more traffic and increase leads. 
 
+<h1><img src=""/></h1>
+
 ### Test Drives
 The test drive application form is only available to people with an account on site. This is to ensure that if you have a test drive booked, it is stored on your user profile so you can edit and delete your appointment. I did not want this available to just anyone who accesses the site, as this could lead to a lot of bookings and potential no shows. I wanted only serious buyers to have access to test drives, ensuring higher quality leads. 
+
+<h1><img src=""/></h1>
 
 ### Stock
 The stock page is the bread and butter for the site. This is where users can find information about all of the cars in stock on the site. I wanted each vehicle to live inside of a bootstrap card with a button for applying for finance or booking a test drive. I think the bootstrap card layout on this page give is a very neat and proffessional feel. I also added edit and delete buttons for super users so they can edit or delete stock from the site. 
 
+<h1><img src=""/></h1>
+
 ### Profile
 The profile was heavily inspired by the boutique ado walkthrough and then further expanded upon by adding test drives to the bottom of the page where the user can edit and delete their test drive bookings too. Users can also save their address info to the checkout and see previous order history.
 
+<h1><img src=""/></h1>
+
 ### Newsletter
 The newsletter was placed at the top of the footer so it is easily visible. I only wanted one required field of email so this made it really accessible for people to sign up to so they can stay up to date with new stock on the site and in turn increase traffic to the site with returning users. 
+
+<h1><img src=""/></h1>
 
 ### Privacy Policy
 
@@ -128,17 +145,90 @@ I generated a standard privacy policy and linked this in the footer.
 ### Custom 404 page
 Custom 404 page is thrown when a user enters a wrong or invalid link on site
 
+<h1><img src=""/></h1>
 
+## Features Left To Implement
 
+There are a number of features I would like to implement for future sprints on this site:
+
+- A wishlist so users can save cars they are considering purchasing
+- A reviews section which would be linked to an active google profile 
+- a searchbar so users can search for specific items or categories
+- An accessories tab in the store so users can purchase car accessories
+- form validation on test drives booking form so users can only book for a future date
+- Instead of paying the full amount for the vehicle, the user pays a deposit to secure the vehicle
 
 # Web Marketing Strategies
 
+In the web marketing module of the course we were tasked with creating a list of questions to consider when creating a marketing plan for our E-Commerce store.
 
+- Who is the target audience for the site?
+- Where does the target audience for the site usually look when buying a new car?
+- Do they typically use social media?
+- What is most important to potential users when buying a new car?
+- What do people typically search for when buying a new car?
 
+Short-Tail Keywords:
+- Used Cars
+- Car Dealership
+- Car Finance
+- Test Drive
+- Buy a Car
+- Midlands Cars
+- Car Loans
+- Affordable Cars
+- Best Car Deals
+- New Cars
+
+Long-Tail Phrases:
+- Used Cars for Sale in the Midlands
+- Best Car Dealership in Mountmellick
+- Affordable Car Finance Options Ireland
+- Test Drive a Car Near Me
+- Buy a Reliable Second-Hand Car Locally
+- Car Loans for First-Time Buyers Ireland
+- Car Finance in the Midlands
+- Best Family Cars for Sale in Laois
+- How to Apply for Car Finance in Ireland
+- Where to Find the Best Car Deals Near Me
+
+<h1><img src=""/></h1>
+
+## Meta Data
+
+img of meta data 
+
+## Sitemap
+
+I used XML-Sitemaps to generate a sitemap file. I downloaded the xml and included in the repository as advised in the course content.
+
+## Robots
+
+I included a robots.txt file. 
+
+## Social Media Marketing
+
+I created a mockup of a business facebook page for the dealership. I think Facebook is best suited as potential buyers may typically search Facebook marketplace when searching for a new car to purchase
+
+<h1><img src=""/></h1>
+
+## Email Marketing
+I used Mailchimp to create a newsletter sign up which was then integrated into the footer of the project with only an email address as the required field, to make signing up easy. 
+
+<h1><img src=""/></h1>
 
 # Technology
 
-
+- Html 
+- CSS 
+- Font Awesome 
+- Google Fonts 
+- Bootstrap 
+- Javascript
+- Python 
+- Django Framework
+- GitHub 
+- Heroku
 
 
 # Testing
