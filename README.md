@@ -91,31 +91,33 @@ I wanted the footer to contain as much info as possible without feeling cramped 
 
 The index page AKA the home page, is the landing page for the site. I wanted it to be visually appealling and grab the user's attention immediately hence the flashy BMW as the hero image. The user can then see the button for viewing stock too. The home page also contains the Header and Footer, as do all other pages on the site 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/home.png"/></h1>
 
 ### About
 
 I kept the about page very simple. It just gives a few key details about the dealership and why they should choose mountmellick motors for buying their next vehicle. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/about1.png"/></h1>
+<h1><img src="/static/images/readme-images/about2.png"/></h1>
+
 
 ### bag
 
 The bag contains all the contents of the users shopping bag. Heavily inspired by the boutique ado walkthrough. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/bag.png"/></h1>
 
 ### Checkout
 
 The checkout along with stripe implementation were taken directly from the boutique ado walkthrough. I really enjoyed this part of the walkthrough as I know Stripe is a very powerful and uselful tool to know how to work with in my future career as a developer. That said, it was also the most challenging part of the walkthrough for me. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/checkout.png"/></h1>
 
 ### Finance
 
 The finance page is broken up into 3 pages, Finance info, Finance application and finance success. I wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership. If the finance applications were locked behind a sign up process, the dealership may lose leads. This is typical of the automotive industry. I also included buttons to the finance application form on the stock page to drive more traffic and increase leads. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/finance.png"/></h1>
 
 ### Test Drives
 The test drive application form is only available to people with an account on site. This is to ensure that if you have a test drive booked, it is stored on your user profile so you can edit and delete your appointment. I did not want this available to just anyone who accesses the site, as this could lead to a lot of bookings and potential no shows. I wanted only serious buyers to have access to test drives, ensuring higher quality leads. 
@@ -125,7 +127,7 @@ The test drive application form is only available to people with an account on s
 ### Stock
 The stock page is the bread and butter for the site. This is where users can find information about all of the cars in stock on the site. I wanted each vehicle to live inside of a bootstrap card with a button for applying for finance or booking a test drive. I think the bootstrap card layout on this page give is a very neat and proffessional feel. I also added edit and delete buttons for super users so they can edit or delete stock from the site. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/stock.png"/></h1>
 
 ### Profile
 The profile was heavily inspired by the boutique ado walkthrough and then further expanded upon by adding test drives to the bottom of the page where the user can edit and delete their test drive bookings too. Users can also save their address info to the checkout and see previous order history.
@@ -135,17 +137,19 @@ The profile was heavily inspired by the boutique ado walkthrough and then furthe
 ### Newsletter
 The newsletter was placed at the top of the footer so it is easily visible. I only wanted one required field of email so this made it really accessible for people to sign up to so they can stay up to date with new stock on the site and in turn increase traffic to the site with returning users. 
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/newsletter.png"/></h1>
 
 ### Privacy Policy
 
 I generated a standard privacy policy and linked this in the footer. 
 
+<h1><img src="/static/images/readme-images/privacypolicy.png"/></h1>
+
 
 ### Custom 404 page
 Custom 404 page is thrown when a user enters a wrong or invalid link on site
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/404.png"/></h1>
 
 ## Features Left To Implement
 
