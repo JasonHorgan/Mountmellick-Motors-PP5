@@ -8,6 +8,8 @@
 
 For my final project of this course I have decided to build a Car Dealership E-Commerce site. I decided to build a car dealership site as the company I currently work for builds websites for Irish Car dealers and I felt this would be a good way to showcase the skills I have learned throughout the year at the code institute. Although purchasing a car outright is not something we would typically do online, I felt this would be a fun take on an e-commerce store and is easily customisable to fit a real world scenario. 
 
+<img src="/static/images/readme-images/mockup.png">
+
 
 ## Site User Goals
 The main goals for users of my site would be to browse a wide range of cars for sale in the midlands so they can purchase a new car in their local area without having to travel too far to a bigger city. 
@@ -132,7 +134,7 @@ The stock page is the bread and butter for the site. This is where users can fin
 ### Profile
 The profile was heavily inspired by the boutique ado walkthrough and then further expanded upon by adding test drives to the bottom of the page where the user can edit and delete their test drive bookings too. Users can also save their address info to the checkout and see previous order history.
 
-<h1><img src=""/></h1>
+<h1><img src="/static/images/readme-images/profile2.png"/></h1>
 
 ### Newsletter
 The newsletter was placed at the top of the footer so it is easily visible. I only wanted one required field of email so this made it really accessible for people to sign up to so they can stay up to date with new stock on the site and in turn increase traffic to the site with returning users. 
