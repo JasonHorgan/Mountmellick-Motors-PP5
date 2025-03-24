@@ -117,7 +117,7 @@ The checkout along with stripe implementation were taken directly from the bouti
 
 ### Finance
 
-The finance page is broken up into 3 pages, Finance info, Finance application and finance success. I wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership. If the finance applications were locked behind a sign up process, the dealership may lose leads. This is typical of the automotive industry. I also included buttons to the finance application form on the stock page to drive more traffic and increase leads. 
+The finance page is broken up into 3 pages, Finance info, Finance application and finance success. I initially wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership, however this was causing an error, so I changed it so that only logged in users can access the finance pages. I included buttons to the finance application form on the stock page for logged in users to drive more traffic and increase leads. 
 
 <h1><img src="/static/images/readme-images/finance.png"/></h1>
 
@@ -423,6 +423,8 @@ I had some friends and family sign up to the site and try to make purchases with
 When I was configuring the send email feature for users creating an account and order confirmations, I was getting an error from Django which was due to the version of Django used in my workspace as I used 3.12.8. The fix for this was to create a new file at the project level of the app called "python-version" which tells heroku to use version 3.11 of Django so that the emails would send. Tutoring helped me debug and fix this issue. 
 
 The main issue present on site at the moment is that when users are booking test drives, they can book a date in the past, which should not be possible. I would like to fix this in a future sprint. 
+
+I initially wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership, however this was causing an error, so I changed it so that only logged in users can access the finance pages. I also changed the nav bar so that finance is only shown to logged in users.
 
 # Deployment
 
