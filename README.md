@@ -312,8 +312,8 @@ Result:
 
 Working as expected.
 
-![wrong password]<img src="/static/images/readme-images/wrong_pw.png">
-![Login Success]<img src="/static/images/readme-images/login_success.png">
+<img src="/static/images/readme-images/wrong_pw.png">
+<img src="/static/images/readme-images/login_success.png">
 
 <br>
 
@@ -335,7 +335,7 @@ Result:
 
 Working as expected
 
-![logout success]<img src="/static/images/readme-images/logout_success.png">
+<img src="/static/images/readme-images/logout_success.png">
 
 Description:
 
@@ -360,7 +360,70 @@ Result:
 
 Working as expected
 
-![Order Success]<img src="/static/images/readme-images/order_success.png">
+<img src="/static/images/readme-images/order_success.png">
+
+
+<br>
+
+Description:
+
+Logged in users can see previous orders
+
+Steps:
+
+1. Log in and navigate to [Profile]( https://mountmellick-motors-59b177d11415.herokuapp.com/profile/ ) after making a purchase
+2. Click on order number to view all details of previous order
+
+Expected:
+
+Previous orders are shown on profile page.
+
+Result:
+
+Working as expected
+
+<br>
+
+Description:
+
+Logged in users can book a test drive
+
+Steps:
+
+1. Log in and navigate to [Book a test drive]( https://mountmellick-motors-59b177d11415.herokuapp.com/test-drives/book/ )
+2. Fill in all info on form
+3. Click book a test drive button
+
+Expected:
+
+When the book a test drive button is clicked, the user is shown a confirmation that the booking has been received
+
+Result:
+
+Working as expected
+
+<br>
+
+Description:
+
+Logged in users can edit and delete booked test drives 
+
+Steps:
+
+1. Log in and navigate to [Profile]( https://mountmellick-motors-59b177d11415.herokuapp.com/profile/ )
+2. Scroll to the bottom of the page to see bookings
+3. Click edit or delete buttons
+
+Expected:
+
+If edit button is clicked, the user is brought back to the form to change the vehicle, date, or time. If the delete button is clicked, a modal pops up asking the user to confirm if they really want to delete a booking.
+
+Result:
+
+Working as expected
+
+<br>
+
 
 
 | Test |Result  |
