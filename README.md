@@ -424,6 +424,26 @@ Working as expected
 
 <br>
 
+Description:
+
+Logged in users can submit a finance application
+
+Steps:
+
+1. Log in and navigate to [Apply for finance]( https://mountmellick-motors-59b177d11415.herokuapp.com/finance/finance-application/ )
+2. Fill in all info on form
+3. Click Submit application button
+
+Expected:
+
+When the submit application button is clicked, the user is shown a confirmation that the application has been received and they see a confirmation number
+
+Result:
+
+Working as expected
+
+<br>
+
 
 
 | Test |Result  |
