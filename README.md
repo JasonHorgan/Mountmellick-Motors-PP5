@@ -331,23 +331,434 @@ The main issue present on site at the moment is that when users are booking test
 
 # Deployment
 
-This project was deployed using Heroku. Full details of deployment seen below:
+### Creating a Database
 
-Part 1 - Create the Heroku app:
+Below you will find all of the steps for creating a database using PostgreSQL from Code Institute:
 
-Navigate to your Heroku dashboard and create a new app with a unique name in a region close to you.
-In your new app’s settings tab, ensure the Config Var DISABLE_COLLECTSTATIC key has a value of 1. You should also set your Stripe keys, secret key and Database URL in your config vars section. 
+- Navigate to PostgreSQL from Code Institute
+- Enter your student email address in the input field provided
+- Click Submit
+- Wait while the database is created
+- Your database is successfully created! Please review the email sent to your student email inbox
 
-Part 2 - Update your code for deployment:
+Now that we have a new database instance created, in the next step we’ll create a Heroku app to connect to.
 
-Use pip3 to install gunicorn~=20.1 and freeze it to the requirements.txt file.
-In the settings.py file, set the DEBUG constant to False and append the '.herokuapp.com' hostname to the ALLOWED_HOSTS list.
-Git add, commit and push the code to your GitHub repo.
+Let’s create this app now. Log into Heroku and go to the Dashboard.
 
-Part 3 - Deploy to Heroku:
+1: Click New to create a new app
+2: Give your app a name and select the region closest to you. When you’re done, click Create app to confirm
+3: Open the Settings tab
+4: Add the config var DATABASE_URL, and for the value, copy in your database url from your PostgreSQL from Code Institute email. It should look something like this
 
-In your new app’s Deploy tab, search for your GitHub repo and connect it to the Heroku app. Manually deploy the main branch of this GitHub repo.
-In your new app’s resources tab, ensure you are using an eco dyno and delete any Postgres database Add-on.
+<img src="/static/images/readme-images/config-var.png">
+
+5: Leave this tab open as well, we’ll return here shortly
+
+Now we can set up our project to connect to our PostgreSQL from Code Institute database, create our database tables by running migrations, add our shops fixtures, and confirm that it all works by creating a superuser.
+
+Open up your IDE tab and follow the steps below.
+
+1: In the terminal, install dj_database_url and psycopg2, both of these are needed to connect to your external database.
+
+2: Update your requirements.txt file with the newly installed packages
+
+3: In your settings.py file, import dj_database_url underneath the import for os
+
+4: Scroll to the DATABASES section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new database instead. Paste in the database URL from your PostgreSQL from Code Institute email in the position indicated
+
+<img src="/static/images/readme-images/database_instructions.png">
+
+5: In the terminal, run the showmigrations command to confirm you are connected to the external database
+
+6: If you are, you should see a list of all migrations, but none of them are checked off
+
+7: Migrate your database models to your new database
+
+8: Load in the fixtures.
+
+9: Create a superuser for your new database
+
+<img src="/static/images/readme-images/create_superuser.png">
+
+10: Finally, to prevent exposing our database when we push to GitHub, we will delete it again from our settings.py - we’ll set it up again using an environment variable shortly - and reconnect to our local sqlite database. For now, your DATABASE setting in the settings.py file should look like this
+
+<img src="/static/images/readme-images/database_instructions_2.png">
+
+
+### Deploying to Heroku
+
+In these text-based steps, we will configure and deploy our e-commerce application to the web.
+
+It is not secure to have your SECRET_KEY variable committed to GitHub, so we will create a new secret key and hide it in our environment.
+
+Add the following code to env.py in the root directory of your project. You can use a service such as https://randomkeygen.com/ to generate secret keys.
+
+"os.environ.setdefault('SECRET_KEY', 'Your secret key here')"
+
+In settings.py, update the SECRET_KEY value to the following code. This code will access the SECRET_KEY variable from the environment instead of hard-coding it into our settings.py file.
+
+"SECRET_KEY = os.environ.get('SECRET_KEY')"
+
+If you don't already have an env.py file, you will also need to:
+
+import os at the top of the env.py file.
+import env at the top of the settings.py file.
+
+#### Preparing our project for deployment
+
+1. In settings.py, locate the DATABASES settings
+
+2. Update the code to this:
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+This code will ensure that our development environment can continue to access our local SQLite database and that our deployed site can simultaneously access the separate database we created in the last topic.
+
+3. Next, locate where the env module is imported into settings.py.
+
+4. As your env.py file is not committed to Git (in order to keep your environment variables secret), your Heroku app will not be able to access this file and will throw an error. To prevent this, update the code to check if the file exists in the environment first before trying to import it:
+
+Note: Your Heroku app will access its environment variables from the Heroku Config Vars.
+
+5. Next, we need to create a Procfile in the root directory of our project.
+
+Important: The Procfile must start with a capital P, and it has no file extension.
+
+6. Inside the Procfile
+
+we will tell Heroku to create a web dyno and run gunicorn to serve our Django app:
+
+web: gunicorn mountmellick_motors.wsgi
+
+This declaration assumes that your the main django project folder for your app is named mountmellick_motors, this will need to be updated to your project name 
+Note: the space after the colon
+Note: gunicorn mountmellick_motors.wsgi is the command Heroku will use to start the server. It works similarly to python3 manage.py runserver.
+Note: gunicorn is a production equivalent of the manage.py runserver used in development but with speed and security optimisation.
+
+7. To ensure that Heroku uses the correct version of Python to work with all the project's dependencies, add a runtime.txt file to the root directory. Inside it, add the following line of code with whichever version of Python you are using:
+
+python-3.11.11
+
+8. A final change we need to make to settings.py is to add our Heroku app hostname. To get this, return to your Heroku app dashboard, and click the Open app button.
+
+9. Copy the URL for your app.
+
+10. In settings.py, add the URL for your app to the ALLOWED_HOSTS.
+
+Important: Remove https:// from the start of the URL, and the trailing slash from the end of the URL:
+
+#### Installing gunicorn 
+
+1. In the terminal, install gunicorn:
+
+pip3 install gunicorn (or pip install gunicorn, depending on your operating system)
+
+2. Freeze your updated dependencies into the requirements file with:
+
+pip3 freeze --local > requirements.txt
+
+3. Save, commit and push all your changes to GitHub.
+
+#### Preparing Heroku settings for deployment
+
+1. In your Heroku application, navigate to the app settings.
+
+2. Open the Config Vars.
+
+3. Create a new environment variable called DISABLE_COLLECTSTATIC, and give it a value of 1.
+
+For our initial deployment, we need to temporarily disable Heroku from collecting static files from our project. This step prevents Heroku from uploading static files, such as CSS and JS, during the build. In a future topic, we'll set up an AWS account to manage these files. For now, the DISABLE_COLLECTSTATIC environment variable will prevent deployment errors, allowing us to successfully deploy our site without accessing static files.
+
+4. Create a new environment variable called SECRET_KEY, and set its value to a random string. Your Heroku secret key should not be the same as the one set in your env.py file. You can use a service such as https://randomkeygen.com/ to generate secret keys.
+
+#### Deploying the app
+
+1. On your Heroku app dashboard, select the Deploy tab.
+
+2. Here, we will connect our Heroku app to our GitHub repository and deploy our project. Scroll to the Deployment method and select GitHub
+
+3. Search for your repository name, then click Connect
+
+4. Click the Enable Automatic Deploys button. This will ensure that any time you push new code to your GitHub repository, Heroku will deploy the updated application.
+
+5. Click Deploy Branch to deploy your project.
+
+6. Watch the build log as it runs. You can view the build output in the application's Activity tab in the dashboard. This build may take several minutes to complete.
+
+7. Click the Open app button at the top of the page to open your app. It will look odd without the static files connected, but the links should work. If you navigate to a shop category, you should be able to see product images.
+
+#### Conditionally setting DEBUG
+
+1. Once you confirm that your project has deployed—albeit without the static files connected—we'll conditionally set DEBUG to True only in the development environment.
+
+Important: Setting DEBUG to True leaves your site vulnerable to security issues. Therefore, it must be set to False when deployed.
+
+In settings.py, update the DEBUG value to True only if an environment variable named DEVELOPMENT is present.
+
+DEBUG = 'DEVELOPMENT' in os.environ
+
+2. In env.py, add a new environment variable for DEVELOPMENT and set it to '1'
+
+os.environ.setdefault('DEVELOPMENT', '1')
+Then, commit and push your changes to GitHub.
+
+Note: Your product images will no longer show on Heroku now that DEBUG is set to False. Don't worry; in the next section, we'll host them with AWS.
+
+#### Removing paid-for Postgres add-on
+
+Due to a Heroku automation, Heroku automatically assigns you a paid-for Postgres database add-on despite the fact that you are not using their database service for your application. To prevent getting charged for this add-on, you can remove it with the following steps:
+
+1. In your Heroku app dashboard, click the Resources tab:
+
+2. Next to Heroku Postgres, click the chevron button on the far right.
+
+3. Select Delete Add-on
+
+4. Type your app name, then click Remove add-on
+
+
+In the next topic, we'll get an AWS account set up and start configuring S3 to host our static files and product images.
+
+### Amazon Web Services
+
+We will use Amazon web services to host our static files. Here are the steps on how to set this up and connect it to the project:
+
+#### Step 1:
+
+- Sign in or create an account on  [AWS](https://signin.aws.amazon.com/)
+
+1. Type ‘s3’ into the search bar
+2. Click on S3
+3. Click the "Create a new bucket button"
+
+To create the new bucket:
+
+1. Enter a bucket name
+2. Select ‘ACLs enabled’
+3. Select ‘Bucket owner preferred’
+4. Deselect ‘Block all public access’
+5. Check the box to acknowledge the risk of public access
+6. Leave the other options unchanged and click ‘create bucket’
+
+#### Step 2 - Enable static website hosting
+
+When the bucket is created, click on the bucket name to view the bucket details:
+Click on the ‘Properties’ tab:
+Scroll down to the ‘static website hosting’ section and click ‘Edit’:
+1. Click ‘Enable’
+2. Enter ‘index.html’ (without quotes) into the Index document input
+3. Enter ‘error.html’ (without quotes) into the Error document input
+4. Click ‘Save changes’
+
+#### Step 3 - Change CORS configuration
+
+Click on the permissions tab:
+Scroll down to the Cross-origin resource sharing (CORS) section and click ‘Edit’
+
+1. Add the following code for the CORS settings
+
+[
+{
+"AllowedHeaders": ["Authorization"],
+"AllowedMethods": ["GET"],
+"AllowedOrigins": ["*"],
+"ExposeHeaders": []
+}
+]
+
+2. Click ‘Save changes’
+
+
+#### Step 4 - Add a bucket policy
+
+On the Permissions tab of your S3 bucket, scroll to the ‘Bucket policy’ section and click ‘Edit’:
+Click ‘Policy Generator’:
+This will open in a new tab.
+
+1. For the policy type you can select ‘S3 Bucket Policy’
+2. For the principal you can enter “*” without quotes
+3. For the Action select ‘GetObject’ from the dropdown
+
+Then go back to the bucket policy editor in the other tab and click the copy button to copy the ARN:
+
+Then go back to the Policy Generator in the other tab
+1. Paste the ARN into the ARN input
+2. Click ‘Add Statement
+
+Scroll down and click ‘Generate Policy’:
+
+Copy all of the text in the popup:
+
+Go back to the policy editor in the other tab and paste in the policy code.
+
+Edit the ‘Resource’ value by adding /* to the end, to allow access to all objects within the bucket
+
+It should look like this, but instead of YOUR_ARN you will have your actual ARN:
+
+It should look like this, but instead of YOUR_ARN you will have your actual ARN:
+{
+"Version": "2012-10-17",
+"Id": "Policy1720032710777",
+"Statement": [
+{
+"Sid": "Stmt1720024120521",
+"Effect": "Allow",
+"Principal": "*",
+"Action": "s3:GetObject",
+"Resource": "YOUR_ARN/*"
+}
+]
+}
+
+Scroll to the bottom and click ‘Save Changes’:
+
+#### Step 5 - Edit the Access Control List (ACL)
+
+Back on the Permissions tab, scroll down to the Access control list section and click ‘Edit’:
+On the ‘Edit Access control list’ page:
+1. Click ‘List’ in the Everyone (public access)
+2. Click the checkbox to indicate that you understand the effects of the changes
+3. Click ‘Save changes’
+
+
+#### Creating AWS Groups, Policies and Users
+
+#### Step 1 - Create a user group
+
+1. Search for ‘iam’ in the search bar at the top
+2. Click on ‘IAM’
+
+Click ‘User Groups’ on the left:
+Click ‘Create Group’:
+Enter a group name: (here I’ve used ‘manage-test-bucket’ as the name of the bucket is
+‘test-bucket’)
+Scroll down to the bottom and click ‘Create user group’:
+
+#### Step 2 - Create a Policy
+
+Click ‘Policies’ in the menu to the left:
+Click ‘Create Policy’:
+1. Click the ‘JSON’ tab
+2. Click the ‘Actions’ dropdown
+3. Click ‘Import policy’
+
+1. Search for ‘s3’
+2. Select ‘AmazonS3FullAccess’
+3. Click ‘Import Policy’
+
+1. Search for ‘s3’ at the top
+2. Right click ‘S3’
+3. Click ‘Open in a new tab’
+
+In the new tab:
+1. Select your bucket
+2. Click ‘Copy ARN’
+
+Go back to the previous tab and add your ARN in quotes to the ‘Resource’ list twice, for the
+second one add /* after the ARN.
+For example my ARN is
+arn:aws:s3:::test-bucket-demo-2024
+
+so the two lines I’ve added are:
+"arn:aws:s3:::test-bucket-demo-2024",
+"arn:aws:s3:::test-bucket-demo-2024/*"
+
+Scroll to the bottom and click ‘Next’:
+
+Enter a policy name and description:
+
+Scroll down and click ‘Create policy’:
+
+You’ll see a success message.
+
+#### Step 3 - Attach the policy to the group
+
+Click ‘User groups’ in the menu to the left:
+
+Click your group:
+1. Click the ‘Permissions’ tab
+2. Click the ‘Add permissions’ dropdown
+3. Click ‘Attach policies’
+
+1. Search for your policy (you can search for the policy name or description that you
+entered previously)
+2. Select the checkbox beside your policy
+3. Click ‘Attach policies’
+
+#### Step 4 - Create a User
+
+1. Click ‘Users’ in the menu to the left
+2. Click ‘Create user’
+
+1. Enter a user name
+2. Click ‘Next’
+
+1. Select the group you created previously
+2. Click ‘Next’
+
+Scroll down and click ‘Create user’:
+
+#### Step 5 - Create an Access Key
+
+Click on your new user:
+Click ‘Security credentials’:
+Scroll down to the ‘Access keys’ section and click ‘Create access key’:
+1. Select ‘Application running outside AWS’
+2. Click ‘Next’
+
+Click ‘Create access key’:
+
+1. Scroll down and click ‘Download .csv file’
+2. Click ‘Done’
+
+Open the .csv file in any text editor (such as Notepad on Windows, TextEdit on Mac). 
+
+Note that the values are separated by a comma, a common mistake is to see the forward slash
+as separating the values, but it’s actually part of the last value:
+
+Use the values as your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY heroku
+config vars:
+
+install boto3
+install django-storages
+freeze to requirements.txt
+add storages to installed apps in settings.py:
+
+if "USE_AWS" in os.environ:
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = "mountmellick-motors-pp5"
+    AWS_S3_REGION_NAME = "eu-north-1"
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+
+Go to heroku to set up enviromental variables
+open CSV file downloaded earlier and copy each variable into heroku Settings
+
+AWS_STORAGE_BUCKET_NAME AWS_ACCESS_KEY_ID from csv AWS_SECRET_ACCESS_KEY from csv USE_AWS = True remove DISABLE_COLLECTSTATIC variable from heroku
+
+Create file in root directory custom_storages.py:
+
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+Go to settings.py, add the AWS settings
+
+To load the media files to S3 bucket
+Go to your S3 bucket page on AWS. Create new folder "media"
+go to the media folder and click Upload
+
 
 # Credits
 
