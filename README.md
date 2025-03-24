@@ -771,6 +771,7 @@ go to the media folder and click Upload
 - CI Slack channel student chat as a troubleshooting/general source of info
 - [OpenAI](https://openai.com/) - Troubleshooting bugs, text for website and for help with media queries/CSS
 - Photos of cars for sale were taken from public adverts on [Done Deal](https://www.donedeal.ie/motor) 
+- Deployment section of readme was written step by step using the deployment section of the boutique ado walkthrough along with its step by step guides for setting up AWS.
 
 
 
