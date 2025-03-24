@@ -509,6 +509,8 @@ The main issue present on site at the moment is that when users are booking test
 
 I initially wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership, however this was causing an error, so I changed it so that only logged in users can access the finance pages. I also changed the nav bar so that finance is only shown to logged in users.
 
+There was an issue with code passing HTML validation on the stock information page but this has since been rectified. The error was due to a stray form and div tag. 
+
 # Deployment
 
 ### Creating a Database
