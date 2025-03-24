@@ -268,6 +268,101 @@ I tested all elements of the site myself manually and found no issues. Further d
 
 ### Account Registration
 
+**Authentication**
+
+Description:
+
+Ensure a user can sign up to the website
+
+Steps:
+
+1. Navigate to [Mountmellick Motors Sign Up](https://mountmellick-motors-59b177d11415.herokuapp.com/accounts/signup/) 
+2. Enter email, username and password
+3. Enter Password again
+4. Click Sign up
+
+Expected:
+
+Another page pops up advising a confirmation email has been sent to the email entered.
+
+An email is then sent to the email address entered in preivious screen. There are different emails that are sent based on the circumstances:
+
+Account already exists with the email entered email template.
+Account confirmation email sent to the email entered which includes a link that the user clicks on to complete account registration. 
+
+Result:
+
+Working as expected.
+<hr>
+
+Description:
+
+Ensure that registered users are able to log in.
+
+Steps:
+1. Navigate to [Mountmellick Motors Log in](https://mountmellick-motors-59b177d11415.herokuapp.com/accounts/login/) 
+2. Enter login details
+3. Click login
+
+Expected:
+
+User is successfully logged in and redirected to the home page with a toast messaging advising successful login, but if their log in details are incorrect, they see an error message letting them know their username or password is wrong
+
+Result:
+
+Working as expected.
+
+![wrong password]<img src="/static/images/readme-images/wrong_pw.png">
+![Login Success]<img src="/static/images/readme-images/login_success.png">
+
+<br>
+
+Description:
+
+User's can sign out
+
+Steps:
+
+1. User logs into their account
+2. User clicks the sign out button
+3. User clicks sign out button again when asked to reconfirm
+
+Expected:
+
+User is logged out and brought back to home page and a toast message is shown advising they have logged out.
+
+Result:
+
+Working as expected
+
+![logout success]<img src="/static/images/readme-images/logout_success.png">
+
+Description:
+
+Logged out users can purchase a vehicle
+
+Steps:
+
+1. Navigate to [Stock]( https://mountmellick-motors-59b177d11415.herokuapp.com/stock/ ) 
+2. Click on the vehicle you want to purchase so the stock info page opens
+3. Click Add to bag
+4. Click Shopping bag icon on the top right of the page to open the bag
+5. Click Secure Checkout button to open checkout page
+6. Fill in all required info 
+7. Checkout Success page opens with an order number and order summary
+8. Confirmation email is received 
+
+Expected:
+
+Order is successful and user receives confirmation email
+
+Result:
+
+Working as expected
+
+![Order Success]<img src="/static/images/readme-images/order_success.png">
+
+
 | Test |Result  |
 |--|--|
 | User can create a profile | Pass |
