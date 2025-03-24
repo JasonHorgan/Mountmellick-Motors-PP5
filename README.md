@@ -479,7 +479,7 @@ Working as expected
 |User can make a purchase with a test credit card | Pass |
 |User receives confirmation email when order is successful | Pass |
 |User can see the confirmation page when order is successful | Pass |
-|All users can submit a finance application | Pass |
+|Logged in user can submit a finance application | Pass |
 |Logged in user can view and update their address on profile page | Pass |
 |Logged in User can view order history on profile page | Pass |
 |Logged in User can create test drive bookings | Pass |
