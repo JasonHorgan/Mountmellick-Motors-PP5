@@ -337,6 +337,8 @@ Working as expected
 
 <img src="/static/images/readme-images/logout_success.png">
 
+<hr>
+
 Description:
 
 Logged out users can purchase a vehicle
@@ -565,7 +567,7 @@ When I was configuring the send email feature for users creating an account and 
 
 The main issue present on site at the moment is that when users are booking test drives, they can book a date in the past, which should not be possible. I would like to fix this in a future sprint. 
 
-I initially wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership, however this was causing an error, so I changed it so that only logged in users can access the finance pages. I also changed the nav bar so that finance is only shown to logged in users.
+I initially wanted all users of the site to be able to submit a finance application, which in turn would generate more leads for the car dealership, however unregistered users attempting to submit the finance form was throwing an error, so I changed it so that only logged in users can access the finance application page. I also changed the nav bar so that finance is only shown to logged in users.
 
 There was an issue with code passing HTML validation on the stock information page but this has since been rectified. The error was due to a stray form and div tag. 
 
