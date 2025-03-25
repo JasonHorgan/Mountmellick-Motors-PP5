@@ -117,7 +117,7 @@ The checkout along with stripe implementation were taken directly from the bouti
 
 ### Finance
 
-The finance page is broken up into 3 pages, Finance info, Finance application and finance success. I initially wanted all users of the site to be able to access this site, which in turn will generate more leads for the car dealership, however this was causing an error, so I changed it so that only logged in users can access the finance pages. I included buttons to the finance application form on the stock page for logged in users to drive more traffic and increase leads. 
+The finance page is broken up into 3 pages, Finance info, Finance application and finance success. I initially wanted all users of the site to be able to access this, which in turn would generate more leads for the car dealership, however the form submission for unregistered users was causing an error, so I changed it so that only logged in users can access the finance pages. 
 
 <h1><img src="/static/images/readme-images/finance.png"/></h1>
 
@@ -315,7 +315,7 @@ Working as expected.
 <img src="/static/images/readme-images/wrong_pw.png">
 <img src="/static/images/readme-images/login_success.png">
 
-<br>
+<hr>
 
 Description:
 
@@ -363,7 +363,7 @@ Working as expected
 <img src="/static/images/readme-images/order_success.png">
 
 
-<br>
+<hr>
 
 Description:
 
@@ -382,7 +382,7 @@ Result:
 
 Working as expected
 
-<br>
+<hr>
 
 Description:
 
@@ -402,7 +402,7 @@ Result:
 
 Working as expected
 
-<br>
+<hr>
 
 Description:
 
@@ -422,7 +422,7 @@ Result:
 
 Working as expected
 
-<br>
+<hr>
 
 Description:
 
@@ -442,7 +442,65 @@ Result:
 
 Working as expected
 
-<br>
+<hr>
+
+Description:
+
+Logged out users are prompted to sign up for an account when attempting to book a test drive
+
+Steps:
+
+1. Navigate to [Book a test drive]( https://mountmellick-motors-59b177d11415.herokuapp.com/accounts/login/?next=/test-drives/book/ ) from either the navigation bar or the book a test drive button on the all stock page
+
+Expected:
+
+When the user attempts to navigate to the book a test drive page, they are redirected to the sign in/create an account page
+
+Result:
+
+Working as expected
+
+<img src="/static/images/readme-images/sign_in.png">
+
+<hr>
+
+Description:
+
+Logged out users are prompted to sign up for an account when attempting to submit a finance application
+
+Steps:
+
+1. Navigate to [Submit a finance application]( https://mountmellick-motors-59b177d11415.herokuapp.com/accounts/login/?next=/finance/finance-application/ ) from the apply for finance button on the all stock page
+
+Expected:
+
+When the user attempts to navigate to the apply for finance page, they are redirected to the sign in/create an account page
+
+Result:
+
+Working as expected
+
+<img src="/static/images/readme-images/sign_in.png">
+
+<hr>
+
+Description:
+
+All users of the site can access the about us page
+
+Steps:
+
+1. Navigate to [About us page]( https://mountmellick-motors-59b177d11415.herokuapp.com/about/ )
+
+Expected:
+
+When the user clicks the about us section of the nav bar, they are directed to the about us page
+
+Result:
+
+Working as expected
+
+<hr>
 
 
 
